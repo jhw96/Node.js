@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1><a href='/main'>현웅 첫번째 게시판</a></h1>
+    <hr>
+    <ol>
+      <% for(var i = 0; i<results.length; i++){%>
+        <li>
+          <a href='/main/<%= results[i].id %>'>
+            <%= results[i].title %>
+          </a>
+        </li>
+      <% }; %>
+    </ol>
+    <article>
+      <form action="/main/<%= iresults.id %>/edit" method="post">
+        <p><input type="text" name="title" value='<%= iresults.title %>' placeholder="글제목" ></p>
+        <p><textarea name="content" rows="6" cols="50" placeholder="글내용"><%= iresults.content %></textarea></p>
+        <p><input type="text" name="name" value='<%= iresults.name %>' placeholder="글쓴이"></p>
+        <p><input type="submit" value = "완료"></p>
+      </form>
+    </article>
+    <ul>
+        <li><a href="/write">글쓰기</a></li>
+    </ul>
+  </body>
+</html>

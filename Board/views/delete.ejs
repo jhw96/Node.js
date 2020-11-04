@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>현웅 게시판</title>
+  </head>
+  <body>
+    <h1><a href='/main'>현웅 첫번째 게시판</a></h1>
+    <hr>
+    <ol>
+      <% for(var i = 0; i< results.length; i++){%>
+        <li>
+          <a href='/main/<%= results[i].id %>'>
+            <%= results[i].title %>
+            <%= results[i].name %>
+          </a>
+        </li>
+      <% }; %>
+    </ol>
+    <article>
+  <h1>DELETE? <%= iresults.title %> </h1>
+  <form action='/main/<%= iresults.id %>/delete' method="post">
+    <p><input type="submit" value="YES"></p>
+  </form>
+  <a href='/main/<%= iresults.id %>'><p><input type="submit" value="NO"></p></a>
+</article>
+  </body>
+</html>
