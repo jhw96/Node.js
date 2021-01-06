@@ -163,46 +163,7 @@ router.get('/',function(req,res,next){
     console.log("Get Page Success");
 });
 
-router.get('/product', function(req, res, next) {
-  client.query("SELECT * FROM products;", function(err, result, fields){
-    if(err){
-      console.log("Query Error!");
-    }
-    else{
-      res.render('product', {
-        title : '현웅 상품목록 게시판',
-        results: result
-      });
-      console.log("Qeury Connection Success!");
-    }
-  });
-});
 
-router.post('/product',function(req,res,next){
-    var body = req.body;
-    client.query("INSERT INTO products(name,modelnumber,series)VALUES(?,?,?)",[body.name, body.modelnumber, body.series],function(err, result, fields){
-      if(err){
-        console.log("Insert Query Error!");
-      }
-      else{
-        res.redirect('/product');
-      }
-    })
-});
-
-router.get('/post_test',function(req,res,next){
-    res.render('post_page',{ title : 'Post Test Page'});
-    console.log("Post Test");
-});
-
-
-router.post('/post_test',function(req,res,next){
-    var id = req.body.id;
-    var age = req.body.age;
-    res.writeHead(200, {'Content-Type' : 'text/hmtl'});
-    res.end('id : ' + id + ' age : ' + age);
-    console.log("id : " + id + " age : " + age);
-})
 
 router.get('/error',function(req,res,next){
   res.sendStatus(404);
